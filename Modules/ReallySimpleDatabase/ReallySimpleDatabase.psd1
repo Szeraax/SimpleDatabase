@@ -13,7 +13,7 @@
     RootModule             = 'ReallySimpleDatabase.psm1'
 
     # Version Number
-    ModuleVersion          = '1.0.0'
+    ModuleVersion          = '1.1.0'
 
     # Unique Module ID
     GUID                   = '39538ca5-9ed9-4ee2-945e-393c246ac916'

@@ -31,13 +31,18 @@ function LoadBinaries
     # pre-load the platform specific DLL version
     $parentFolder = Split-Path -Path $PSScriptRoot
 
-    $Path = "$PSScriptRoot\binaries\x$platform\SQLite.Interop.dll"
-    $null = [Internal.Helper]::LoadLibrary($Path)
+    if ($IsLinux) { $os = 'linux' }
+    elseif ($IsMacOS) { $os = 'mac' }
+    else { $os = 'win' }
+    $path = Join-Path $PSScriptRoot Binaries "$os-x$platform" SQLite.Interop.dll
+    [System.Runtime.InteropServices.NativeLibrary]::Load($path)
     Write-Verbose "Interop assembly loaded"
 
     # next, load the .NET assembly. Since the Interop DLL is already
     # pre-loaded, all is good:  
-    Add-Type -Path "$PSScriptRoot\binaries\System.Data.SQLite.dll"
+
+    $path = Join-Path $PSScriptRoot Binaries System.Data.SQLite.dll
+    Add-Type -Path $path
     Write-Verbose "database assembly loaded"
 
 }
