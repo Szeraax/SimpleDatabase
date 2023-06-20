@@ -13,7 +13,7 @@
 RootModule = 'ReallySimpleDatabase.psm1'
 
 # Version Number
-ModuleVersion = '1.0'
+ModuleVersion = '1.0.0'
 
 # Unique Module ID
 GUID = '39538ca5-9ed9-4ee2-945e-393c246ac916'
@@ -22,16 +22,18 @@ GUID = '39538ca5-9ed9-4ee2-945e-393c246ac916'
 Author = 'Dr. Tobias Weltner'
 
 # Company
-CompanyName = 'ISESteroids www.powertheshell.com'
+CompanyName = 'www.powershell.one'
 
 # Copyright
-Copyright = '(c) 2019 Dr. Tobias Weltner. Wrapper around SQLite database. MIT license for all PowerShell code. SQLite is embedded in this code. SQLite license details: https://www.sqlite.org/copyright.html'
+Copyright = '(c) 2021 Dr. Tobias Weltner. Wrapper around SQLite database. MIT license for all PowerShell code. SQLite is embedded in this code. SQLite license details: https://www.sqlite.org/copyright.html'
 
 # Module Description
 Description = 'No-brainer SQLite database wrapper (comes with everything you need to start working with SQLite databases including the database engine. No dependencies. No prerequisites.)'
 
 # Minimum PowerShell Version Required
-PowerShellVersion = ''
+PowerShellVersion = '5.1'
+
+CompatiblePSEditions = @('Desktop', 'Core')
 
 # Name of Required PowerShell Host
 PowerShellHostName = ''
@@ -63,28 +65,32 @@ TypesToProcess = @()
 # Format files (.ps1xml) that need to be loaded when this module loads
 FormatsToProcess = @("Formats/table.ps1xml","Formats/field.ps1xml", "Formats/database.ps1xml")
 
-# 
-NestedModules = @()
-
 # List of exportable functions
 FunctionsToExport = '*'
+PrivateData          = @{
 
-# List of exportable cmdlets
-CmdletsToExport = '*'
+        PSData = @{
 
-# List of exportable variables
-VariablesToExport = '*'
+            Tags       = @(
+                'SQLite'
+                'Database'
+                'SQL'
+                'Storage'
+                'powershell.one'
+                'Windows'
+                'MacOS'
+                'Linux'
+            )
 
-# List of exportable aliases
-AliasesToExport = '*'
+            # A URL to the license for this module.
+            #LicenseUri = 'https://github.com/xxx/blob/master/LICENSE'
 
-# List of all modules contained in this module
-ModuleList = @()
+            # A URL to the main website for this project.
+            ProjectUri = 'https://github.com/TobiasPSP/ReallySimpleDatabase'
 
-# List of all files contained in this module
-FileList = @()
 
-# Private data that needs to be passed to this module
-PrivateData = ''
+        } # End of PSData hashtable
+
+    } # End of PrivateData hashtable
 
 }
