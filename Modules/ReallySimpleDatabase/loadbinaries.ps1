@@ -1,8 +1,7 @@
 #region prerequisites (MUST BE FIRST!)
 
 
-function LoadBinaries
-{
+function LoadBinaries {
 
     # use API method to load Interop databases from wherever we want
     # (else, the DLL needs to be in the search path or inside the
@@ -11,25 +10,20 @@ function LoadBinaries
     $code = '
         [DllImport("kernel32.dll")]
         public static extern IntPtr LoadLibrary(string dllToLoad);
-         [DllImport("kernel32.dll")]
+        [DllImport("kernel32.dll")]
         public static extern bool FreeLibrary(IntPtr hModule);'
 
     Add-Type -MemberDefinition $code -Namespace Internal -Name Helper
 
     # check the platform:
-    if ([Environment]::Is64BitProcess)
-    {
+    if ([Environment]::Is64BitProcess) {
         Write-Verbose "Platform x64"
         $platform = "64"
     }
-    else
-    {
+    else {
         Write-Verbose "Platform x86"
         $platform = "86"
     }
-  
-    # pre-load the platform specific DLL version
-    $parentFolder = Split-Path -Path $PSScriptRoot
 
     if ($IsLinux) { $os = 'linux' }
     elseif ($IsMacOS) { $os = 'osx' }
@@ -39,7 +33,7 @@ function LoadBinaries
     Write-Verbose "Interop assembly loaded"
 
     # next, load the .NET assembly. Since the Interop DLL is already
-    # pre-loaded, all is good:  
+    # pre-loaded, all is good:
 
     $path = Join-Path $PSScriptRoot Binaries System.Data.SQLite.dll
     Add-Type -Path $path
@@ -53,4 +47,3 @@ LoadBinaries
 
 
 #endregion prerequisites
-
