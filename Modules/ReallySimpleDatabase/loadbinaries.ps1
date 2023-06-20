@@ -32,7 +32,7 @@ function LoadBinaries
     $parentFolder = Split-Path -Path $PSScriptRoot
 
     if ($IsLinux) { $os = 'linux' }
-    elseif ($IsMacOS) { $os = 'mac' }
+    elseif ($IsMacOS) { $os = 'osx' }
     else { $os = 'win' }
     $path = Join-Path $PSScriptRoot Binaries "$os-x$platform" SQLite.Interop.dll
     [System.Runtime.InteropServices.NativeLibrary]::Load($path)
