@@ -35,7 +35,7 @@ function LoadBinaries {
     # next, load the .NET assembly. Since the Interop DLL is already
     # pre-loaded, all is good:
 
-    $path = Join-Path $PSScriptRoot Binaries System.Data.SQLite.dll
+    $path = Join-Path $PSScriptRoot Binaries "$os-x$platform" System.Data.SQLite.dll
     Add-Type -Path $path
     Write-Verbose "database assembly loaded"
 
